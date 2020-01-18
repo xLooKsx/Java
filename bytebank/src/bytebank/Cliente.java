@@ -1,5 +1,12 @@
 package bytebank;
 
+/**
+ * Classe que representa um cliente no ByteBank
+ * 
+ * @author xLooKsx
+ * @version 0.1
+ *
+ */
 public class Cliente {
 	
 	private String nome;
