@@ -1,5 +1,11 @@
 package bytebank;
-
+/**
+ * Classe que representa uma conta no ByteBank
+ * 
+ * @author xLooKsx
+ * @version 0.1
+ *
+ */
 public class Conta {
 
 	private double saldo;
@@ -8,6 +14,11 @@ public class Conta {
 	private Cliente titular;
 	private static int total;
 	
+	/**
+	 * Construtor para inicializar o objeto Conta a partir da agencia e numero
+	 * @param agencia
+	 * @param numero
+	 */
 	public Conta(int agencia, int numero){
 	    this.agencia = agencia;
 	    this.numero = numero;
@@ -20,6 +31,11 @@ public class Conta {
         this.saldo += valor;
     }
     
+    /**
+     * Valor precisa ser menor ou igual ao saldo
+     * @param valor
+     * @return
+     */
     public boolean saca(double valor){
         if(this.saldo >= valor){
             this.saldo -= valor;
