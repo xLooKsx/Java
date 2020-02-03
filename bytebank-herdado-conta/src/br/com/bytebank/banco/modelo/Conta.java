@@ -1,6 +1,6 @@
 package br.com.bytebank.banco.modelo;
 
- public abstract class Conta {
+public abstract class Conta implements Comparable<Conta>{
 
 	protected double saldo;
 	private int agencia;
@@ -27,10 +27,32 @@ package br.com.bytebank.banco.modelo;
 		this.saldo -= valor;
 	}
 
-	public void transfere(double valor, Conta destino) throws SaldoInsuficienteException{
-	    this.saca(valor);
-	    destino.deposita(valor);
+	public void transfere(double valor, Conta destino) throws SaldoInsuficienteException {
+		this.saca(valor);
+		destino.deposita(valor);
 	}
+
+	@Override
+	public int compareTo(Conta outra) {
+	        return Double.compare(this.saldo, outra.saldo);
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		
+		Conta outra = (Conta) obj;
+		
+		if (this.agencia != outra.agencia) {
+			return false;
+		}
+
+		if (this.numero != outra.numero) {
+			return false;
+		}
+
+		return true;
+	}
+
 
 	public static int getTotal() {
 		return Conta.total;
@@ -66,6 +88,11 @@ package br.com.bytebank.banco.modelo;
 
 	public void setTitular(Cliente titular) {
 		this.titular = titular;
+	}
+
+	@Override
+	public String toString() {
+		return "agencia=" + agencia + ", numero=" + numero;
 	}
 
 }
